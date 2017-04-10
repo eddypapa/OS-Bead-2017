@@ -1,0 +1,8 @@
+L11. Irjon C nyelvu programokat, ami
+       letrehoz egy nevesitett csovezeteket (bejegyzes az fs-en)
+       megnyitja
+       beleir valamit
+       kozben egy masik program kiolvassa a csovezetekbol
+       ezutan az elso program szinten ir bele valamit
+       a masik program ujbol kiolvassa
+       a processzek megszunnek es az elso program eltunteti a nevesitett csovezeteket
