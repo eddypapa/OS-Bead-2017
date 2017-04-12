@@ -12,7 +12,7 @@ int main()
 	int fd, ret;
 	char buf[32];
 
-	buf[0]=[0];
+	buf[0]=0;
 
 	ret=mkfifo("sajat", 00666);
 	if (ret == -1) {
@@ -30,4 +30,10 @@ int main()
 	printf("Beleirok a fifob: %s:%lu\n",buf,strlen(buf));
 	write(fd,buf,strlen(buf));
 
+	//signal(SIGALRM, (void (*)()) handler);
+    pause();
+
+
+	close(fd);
+	unlink("sajat");
 }
