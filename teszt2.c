@@ -12,13 +12,7 @@ int main()
 	int fd, ret;
 	char buf[32];
 
-	buf[0]=[0];
-
-	ret=mkfifo("sajat", 00666);
-	if (ret == -1) {
-		perror("Fifo create failed!");
-		exit(-1);
-	}
+	buf[0]=0;
 
 	fd=open("sajat", O_RDWR);
 	if (fd == -1) {
@@ -26,8 +20,7 @@ int main()
 		exit(-1);
 	}
 
-	strcpy(buf,"ez egy teszt program\0");
-	printf("Beleirok a fifob: %s:%lu\n",buf,strlen(buf));
-	write(fd,buf,strlen(buf));
+	ret=read(fd,buf,32);
+	printf("Kiolvastam a fifobol a kovetkezot: %s\n",buf);
 
 }
