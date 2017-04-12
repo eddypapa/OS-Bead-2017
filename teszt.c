@@ -1,23 +1,26 @@
 #include <stdio.h>
-#include <signal.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/file.h>
 #include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/msg.h>
-#define READ 0
-#define WRITE 1
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
 
-main ()
+int main()
 {
-	int namedpipe;
-	int in, out;
+	int fd, ret;
 
-	mknod("/tmp/prob", S_IFIFO | 0666, 0);
-
-	namedpipe = open("/tmp/prob", O_RDWR);
-	if (namedpipe == -1)
-	{
-		perror("!!!Hiba a nyitasban");
-		exit(2);
+	ret=mkfifo("sajat", 00666);
+	if (ret == -1) {
+		perror("Fifo create failed!");
+		exit(-1);
 	}
-	printf(" Az ELSO megnyitva\n");
+
+	fd=open("sajat", O_RDWR);
+	if (fd == -1) {
+		perror("Own fifo open is failed!");
+		exit(-1);
+	}
+
 }
