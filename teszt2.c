@@ -12,6 +12,8 @@ int main()
 	int fd, ret;
 	char buf[32];
 
+	printf ("PID= %d\n",getpid());
+
 	buf[0]=0;
 
 	fd=open("sajat", O_RDWR);
@@ -23,4 +25,9 @@ int main()
 	ret=read(fd,buf,32);
 	printf("Kiolvastam a fifobol a kovetkezot: %s\n",buf);
 
+	wait(1);
+
+	ret=read(fd,buf,32);
+	printf("Kiolvastam a fifobol a kovetkezot: %s\n",buf);
+	close(fd);
 }

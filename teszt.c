@@ -9,10 +9,14 @@
 
 int main()
 {
-	int fd, ret;
+	int fd, ret, pid;
 	char buf[32];
 
 	buf[0]=0;
+
+	//Ha gikxer van akkor torli a benntmaradt fifot
+	unlink("sajat");
+	//ha kesz ezt torold ki!
 
 	ret=mkfifo("sajat", 00666);
 	if (ret == -1) {
@@ -30,9 +34,13 @@ int main()
 	printf("Beleirok a fifob: %s:%lu\n",buf,strlen(buf));
 	write(fd,buf,strlen(buf));
 
-	//signal(SIGALRM, (void (*)()) handler);
-    pause();
+	wait(1);
 
+	strcpy(buf,"ez meg mindig teszt program\0");
+	printf("Beleirok a fifob: %s:%lu\n",buf,strlen(buf));
+	write(fd,buf,strlen(buf));
+
+	wait(1);
 
 	close(fd);
 	unlink("sajat");
