@@ -25,7 +25,7 @@ int main()
 	ret=read(fd,buf,32);
 	printf("Kiolvastam a fifobol a kovetkezot: %s\n",buf);
 
-	wait(1);
+	sleep(5);
 
 	ret=read(fd,buf,32);
 	printf("Kiolvastam a fifobol a kovetkezot: %s\n",buf);

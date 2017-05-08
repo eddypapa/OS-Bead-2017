@@ -34,13 +34,13 @@ int main()
 	printf("Beleirok a fifob: %s:%lu\n",buf,strlen(buf));
 	write(fd,buf,strlen(buf));
 
-	wait(1);
+	sleep(5);
 
 	strcpy(buf,"ez meg mindig teszt program\0");
 	printf("Beleirok a fifob: %s:%lu\n",buf,strlen(buf));
 	write(fd,buf,strlen(buf));
 
-	wait(1);
+	sleep(5);
 
 	close(fd);
 	unlink("sajat");
